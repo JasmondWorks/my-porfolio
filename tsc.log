@@ -1,0 +1,5 @@
+src/components/admin/ProjectForm.tsx(210,12): error TS2304: Cannot find name 'Link'.
+src/components/admin/ProjectForm.tsx(210,49): error TS2304: Cannot find name 'Link'.
+src/lib/actions.ts(21,15): error TS2339: Property 'set' does not exist on type 'Promise<ReadonlyRequestCookies>'.
+src/lib/actions.ts(34,13): error TS2339: Property 'delete' does not exist on type 'Promise<ReadonlyRequestCookies>'.
+src/lib/actions.ts(39,29): error TS2339: Property 'get' does not exist on type 'Promise<ReadonlyRequestCookies>'.
