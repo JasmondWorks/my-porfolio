@@ -3,46 +3,44 @@
 import { useTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Edit, Trash2, ExternalLink, MoreHorizontal } from "lucide-react";
-
-import { Project } from "@/types/project";
-import { Button } from "@/components/ui/button";
+import { Edit, Trash2, ExternalLink, FolderPlus } from "lucide-react";
+import { Project, ProjectCategory } from "@/types/project";
 import { deleteProjectAction } from "@/lib/actions";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 interface AdminProjectListProps {
   projects: Project[];
 }
 
+const CATEGORY_STYLES: Record<ProjectCategory, string> = {
+  Frontend: "bg-blue-500/10   text-blue-400   border-blue-500/20",
+  Backend: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+  Fullstack: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+  Mobile: "bg-green-500/10  text-green-400  border-green-500/20",
+  Hackathon: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+};
+
 export function AdminProjectList({ projects }: AdminProjectListProps) {
   if (projects.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-16 text-center">
-        <div className="rounded-full bg-muted p-4 mb-4">
-          <svg
-            className="h-6 w-6 text-muted-foreground"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"
-            />
-          </svg>
+      <div className="flex flex-col items-center justify-center py-20 text-center gap-4">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-dashed border-border bg-muted/20">
+          <FolderPlus className="h-6 w-6 text-muted-foreground" />
         </div>
-        <h3 className="text-sm font-medium text-foreground">No projects</h3>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Get started by creating a new project.
-        </p>
+        <div>
+          <p className="text-sm font-medium text-foreground-heading">
+            No projects yet
+          </p>
+          <p className="text-xs text-muted-foreground mt-1">
+            Create your first project to get started.
+          </p>
+        </div>
+        <Link
+          href="/admin/projects/new"
+          className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-white hover:opacity-90 hover:scale-[1.02] transition-all"
+        >
+          New Project
+        </Link>
       </div>
     );
   }
@@ -60,7 +58,7 @@ function ProjectItem({ project }: { project: Project }) {
   const [isPending, startTransition] = useTransition();
 
   const handleDelete = () => {
-    if (confirm(`Are you sure you want to delete "${project.title}"?`)) {
+    if (confirm(`Delete "${project.title}"? This cannot be undone.`)) {
       startTransition(async () => {
         await deleteProjectAction(project.id);
       });
@@ -68,9 +66,15 @@ function ProjectItem({ project }: { project: Project }) {
   };
 
   return (
-    <div className="flex items-center justify-between p-4 hover:bg-muted/30 transition-colors group">
+    <div
+      className={cn(
+        "group flex items-center justify-between gap-4 px-4 py-3.5 transition-colors hover:bg-muted/20",
+        isPending && "opacity-50 pointer-events-none",
+      )}
+    >
+      {/* Left: thumbnail + info */}
       <div className="flex items-center gap-4 min-w-0">
-        <div className="relative h-10 w-16 bg-muted rounded-md overflow-hidden flex-shrink-0 border border-border/50">
+        <div className="relative h-10 w-16 shrink-0 overflow-hidden rounded-lg border border-border bg-muted/30">
           {project.coverImage ? (
             <Image
               src={project.coverImage}
@@ -79,72 +83,60 @@ function ProjectItem({ project }: { project: Project }) {
               className="object-cover"
             />
           ) : (
-            <div className="flex items-center justify-center h-full w-full text-[10px] text-muted-foreground uppercase tracking-widest bg-muted/50">
-              Img
+            <div className="flex h-full items-center justify-center text-[10px] uppercase tracking-widest text-muted-foreground">
+              img
             </div>
           )}
         </div>
 
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
-            <h3 className="text-sm font-medium text-foreground truncate">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-sm font-medium text-foreground-heading truncate">
               {project.title}
-            </h3>
-            <Badge
-              variant="outline"
-              className="text-[10px] h-5 px-1.5 font-normal text-muted-foreground border-border/60 bg-muted/20"
+            </span>
+            <span
+              className={cn(
+                "rounded-md border px-1.5 py-0.5 text-[10px] font-medium",
+                CATEGORY_STYLES[project.category],
+              )}
             >
               {project.category}
-            </Badge>
+            </span>
+            {project.featured && (
+              <span className="rounded-md border border-yellow-500/20 bg-yellow-500/10 px-1.5 py-0.5 text-[10px] font-medium text-yellow-400">
+                Featured
+              </span>
+            )}
           </div>
-          <div className="flex items-center gap-2 mt-0.5">
-            <Link
-              href={`/projects/${project.slug}`}
-              target="_blank"
-              className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1 transition-colors"
-            >
-              View Live <ArrowIcon />
-            </Link>
-          </div>
+          <Link
+            href={`/projects/${project.slug}`}
+            target="_blank"
+            className="mt-0.5 inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-primary transition-colors"
+          >
+            /projects/{project.slug}
+            <ExternalLink className="h-2.5 w-2.5" />
+          </Link>
         </div>
       </div>
 
-      <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-        <Button variant="ghost" size="sm" asChild className="h-8 w-8 p-0">
-          <Link href={`/admin/projects/${project.id}/edit`}>
-            <Edit className="h-4 w-4 text-muted-foreground" />
-            <span className="sr-only">Edit</span>
-          </Link>
-        </Button>
-        <Button
-          variant="ghost"
-          size="sm"
-          disabled={isPending}
-          onClick={handleDelete}
-          className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive"
+      {/* Right: actions (visible on hover) */}
+      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+        <Link
+          href={`/admin/projects/${project.id}/edit`}
+          className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+          title="Edit"
         >
-          <Trash2 className="h-4 w-4" />
-          <span className="sr-only">Delete</span>
-        </Button>
+          <Edit className="h-3.5 w-3.5" />
+        </Link>
+        <button
+          onClick={handleDelete}
+          disabled={isPending}
+          title="Delete"
+          className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors"
+        >
+          <Trash2 className="h-3.5 w-3.5" />
+        </button>
       </div>
     </div>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg
-      width="10"
-      height="10"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M7 17L17 7" />
-      <path d="M7 7h10v10" />
-    </svg>
   );
 }

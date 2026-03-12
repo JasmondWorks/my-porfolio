@@ -21,6 +21,7 @@ const CATEGORIES: ProjectCategory[] = [
   "Backend",
   "Fullstack",
   "Mobile",
+  "Hackathon",
 ];
 
 export function ProjectForm({

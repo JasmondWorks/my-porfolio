@@ -1,6 +1,55 @@
 [
   {
-    "id": "1",
+    "id": "seamless-point",
+    "title": "SeamlessPoint",
+    "slug": "seamless-point",
+    "category": "Fullstack",
+    "shortDescription": "All-in-one platform for logistics, payments, and utility services.",
+    "longDescription": "A comprehensive logistics and lifestyle platform designed to streamline daily tasks. Users can send packages locally and internationally, pay utility bills (electricity, water), purchase airtime and data, and manage their wallets. The platform integrates multiple third-party services to provide a seamless experience.",
+    "techStack": [
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "Paystack",
+      "T-ship",
+      "Rest API",
+      "Tailwind CSS"
+    ],
+    "coverImage": "/projects/seamless-point.png",
+    "demoVideo": "/projects/seamless-point/demo.mp4",
+    "liveUrl": "https://seamlesspoint.ng",
+    "architecture": {
+      "description": "Built with a decoupled architecture. The Next.js frontend communicates with a scalable Node.js backend. Shipping logistics are handled via T-ship integration, while payments are securely processed through Paystack. The system features a wallet system for quick transactions and robust user authentication."
+    },
+    "engineeringDecisions": [
+      {
+        "topic": "Payment Integration",
+        "decision": "Paystack",
+        "reason": "Reliable and widely trusted payment gateway in the target region with excellent developer documentation.",
+        "tradeoff": "Dependent on external service uptime, handled via webhooks for transaction verification."
+      },
+      {
+        "topic": "Logistics Aggregation",
+        "decision": "T-ship API Integration",
+        "reason": "Allowed rapid access to multiple courier services without building individual integrations for each carrier."
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Services",
+        "value": "5+",
+        "description": "Shipping, Airtime, Data, Bills, etc."
+      },
+      {
+        "label": "Platform",
+        "value": "Web",
+        "description": "Responsive Web App"
+      }
+    ],
+    "dateStr": "2024-02-01"
+  },
+  {
+    "id": "ecommerce-dashboard",
     "title": "E-Commerce Dashboard",
     "slug": "ecommerce-dashboard",
     "category": "Fullstack",
@@ -14,7 +63,7 @@
       "PostgreSQL",
       "Redis"
     ],
-    "coverImage": "/images/projects/dashboard-cover.jpg",
+    "coverImage": "/projects/ecommerce-dashboard.png",
     "demoVideo": "/videos/dashboard-demo.mp4",
     "githubUrl": "https://github.com/username/dashboard",
     "liveUrl": "https://dashboard-demo.com",
@@ -49,7 +98,7 @@
     "dateStr": "2023-11-01"
   },
   {
-    "id": "2",
+    "id": "travel-app",
     "title": "Travel Companion App",
     "slug": "travel-app",
     "category": "Mobile",
@@ -62,7 +111,7 @@
       "Redux Toolkit",
       "SQLite"
     ],
-    "coverImage": "/images/projects/travel-cover.jpg",
+    "coverImage": "/projects/travel-app.png",
     "githubUrl": "https://github.com/username/travel-app",
     "engineeringDecisions": [
       {

@@ -1,4 +1,9 @@
-export type ProjectCategory = "Frontend" | "Backend" | "Fullstack" | "Mobile";
+export type ProjectCategory =
+  | "Frontend"
+  | "Backend"
+  | "Fullstack"
+  | "Mobile"
+  | "Hackathon";
 
 export interface ProjectMetric {
   label: string;

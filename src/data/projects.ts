@@ -19,7 +19,7 @@ export const projects: Project[] = [
       "Rest API",
       "Tailwind CSS",
     ],
-    coverImage: "/projects/seamless-point/cover.jpg",
+    coverImage: "/projects/seamless-point.png",
     demoVideo: "/projects/seamless-point/demo.mp4",
     liveUrl: "https://seamlesspoint.ng",
     architecture: {
@@ -69,7 +69,7 @@ export const projects: Project[] = [
       "PostgreSQL",
       "Redis",
     ],
-    coverImage: "/images/projects/dashboard-cover.jpg",
+    coverImage: "/projects/ecommerce-dashboard.png",
     demoVideo: "/videos/dashboard-demo.mp4",
     githubUrl: "https://github.com/username/dashboard",
     liveUrl: "https://dashboard-demo.com",
@@ -123,7 +123,7 @@ export const projects: Project[] = [
       "Redux Toolkit",
       "SQLite",
     ],
-    coverImage: "/images/projects/travel-cover.jpg",
+    coverImage: "/projects/travel-app.png",
     githubUrl: "https://github.com/username/travel-app",
     engineeringDecisions: [
       {
