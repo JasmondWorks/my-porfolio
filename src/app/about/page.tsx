@@ -75,7 +75,7 @@ const SKILL_GROUPS = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
-      <div className="container max-w-5xl py-16 md:py-24 space-y-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-20">
         {/* ── Intro ────────────────────────────────── */}
         <div className="grid gap-12 md:grid-cols-5 md:gap-16 items-center">
           <div className="md:col-span-3 space-y-5">
@@ -109,7 +109,7 @@ export default function AboutPage() {
               <a
                 href="/resume.pdf"
                 download
-                className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:border-primary/20 hover:bg-muted/50 shadow-sm transition-all duration-200"
+                className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:border-primary/20 hover:bg-muted/50 transition-all duration-200"
               >
                 <Download className="h-4 w-4" /> Download CV
               </a>
@@ -151,7 +151,7 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-primary/20 hover:bg-primary/5 transition-all shadow-sm"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-primary/20 hover:bg-primary/5 transition-all"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -174,7 +174,7 @@ export default function AboutPage() {
             {SKILL_GROUPS.map(({ icon: Icon, title, skills }) => (
               <div
                 key={title}
-                className="rounded-xl border border-border bg-card p-5 space-y-4 shadow-sm hover:shadow-md hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
+                className="rounded-xl border border-border bg-card p-5 space-y-4 hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="flex items-center gap-2">
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 border border-primary/20">
@@ -257,7 +257,7 @@ export default function AboutPage() {
           </p>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:opacity-90 hover:scale-[1.02] transition-all duration-200"
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-sm font-semibold text-white hover:opacity-90 hover:scale-[1.02] transition-all duration-200"
           >
             Get in Touch <ArrowRight className="h-4 w-4" />
           </Link>
