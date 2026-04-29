@@ -12,9 +12,13 @@ const NAV_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { href: "https://github.com", icon: Github, label: "GitHub" },
-  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://twitter.com", icon: Twitter, label: "Twitter" },
+  { href: "http://github.com/JasmondWorks", icon: Github, label: "GitHub" },
+  {
+    href: "https://www.linkedin.com/in/obafemi-olorede",
+    icon: Linkedin,
+    label: "LinkedIn",
+  },
+  // { href: "https://twitter.com", icon: Twitter, label: "Twitter" },
 ];
 
 export function Navbar() {
@@ -39,12 +43,16 @@ export function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="group flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary transition-transform duration-200 group-hover:scale-105">
-              <span className="text-xs font-bold text-white">P</span>
+          <Link href="/" className="group flex items-center gap-2.5">
+            <span className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-indigo-500 to-violet-600 transition-transform duration-200 group-hover:scale-105 overflow-hidden">
+              {/* subtle inner highlight */}
+              <span className="absolute inset-0 bg-linear-to-b from-white/20 to-transparent" />
+              <span className="relative text-[11px] font-black tracking-tighter text-white leading-none">
+                OO
+              </span>
             </span>
-            <span className="font-semibold text-sm tracking-tight text-foreground-heading">
-              Portfolio<span className="text-primary">.</span>
+            <span className="font-bold text-sm tracking-tight text-foreground-heading">
+              Olorede<span className="text-primary font-black">.</span>
             </span>
           </Link>
 

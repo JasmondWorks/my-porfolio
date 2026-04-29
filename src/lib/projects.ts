@@ -1,3 +1,4 @@
+import { projects as staticProjects } from "@/data/projects";
 import { Project } from "@/types/project";
 import fs from "fs/promises";
 import path from "path";
@@ -7,11 +8,12 @@ const DATA_FILE_PATH = path.join(process.cwd(), "src/data/projects.json");
 export async function getProjects(): Promise<Project[]> {
   try {
     const data = await fs.readFile(DATA_FILE_PATH, "utf-8");
-    return JSON.parse(data);
-  } catch (error) {
-    console.error("Error reading projects:", error);
-    return [];
+    const jsonProjects = JSON.parse(data) as Project[];
+    if (jsonProjects.length > 0) return jsonProjects;
+  } catch {
+    // fall through to static data
   }
+  return staticProjects;
 }
 
 export async function getProjectBySlug(

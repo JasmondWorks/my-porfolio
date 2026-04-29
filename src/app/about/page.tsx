@@ -119,8 +119,8 @@ export default function AboutPage() {
           {/* Avatar placeholder + socials */}
           <div className="md:col-span-2 flex flex-col items-center gap-6">
             <div className="relative">
-              <div className="h-48 w-48 rounded-2xl border border-border bg-linear-to-br from-indigo-50 to-violet-50 flex items-center justify-center shadow-inner">
-                <span className="text-6xl font-bold gradient-text">P</span>
+              <div className="h-48 w-48 rounded-2xl border border-border bg-linear-to-br from-indigo-500/10 to-violet-500/10 flex items-center justify-center shadow-inner">
+                <span className="text-6xl font-black gradient-text tracking-tighter">OO</span>
               </div>
               <div
                 className="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full border-2 border-background bg-green-500"
@@ -130,7 +130,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="text-center space-y-1">
-              <p className="font-semibold text-foreground-heading">Your Name</p>
+              <p className="font-semibold text-foreground-heading">Obafemi Olorede</p>
               <p className="text-sm text-muted-foreground">
                 Full-Stack Engineer
               </p>
