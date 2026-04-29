@@ -42,7 +42,7 @@ export function ProjectMedia({
           src={coverImage}
           alt={title}
           fill
-          className={`object-cover transition-opacity duration-500 ${playing ? "opacity-0" : "opacity-100"}`}
+          className={`object-contain transition-opacity duration-500 ${playing ? "opacity-0" : "opacity-100"}`}
           priority
         />
       ) : (
@@ -62,7 +62,7 @@ export function ProjectMedia({
           src={demoVideo}
           loop
           playsInline
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${playing ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-500 ${playing ? "opacity-100" : "opacity-0"}`}
         />
       )}
 
