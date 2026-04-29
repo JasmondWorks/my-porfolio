@@ -10,7 +10,11 @@ interface ProjectMediaProps {
   title: string;
 }
 
-export function ProjectMedia({ coverImage, demoVideo, title }: ProjectMediaProps) {
+export function ProjectMedia({
+  coverImage,
+  demoVideo,
+  title,
+}: ProjectMediaProps) {
   const [playing, setPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -28,7 +32,10 @@ export function ProjectMedia({ coverImage, demoVideo, title }: ProjectMediaProps
   }
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-muted/20 aspect-video shadow-xl">
+    <div
+      className="relative mx-auto w-full aspect-video overflow-hidden rounded-2xl border border-border bg-muted/20 shadow-xl"
+      style={{ maxWidth: "min(100%, calc(65vh * 16 / 9))" }}
+    >
       {/* Cover image */}
       {coverImage ? (
         <Image
@@ -39,7 +46,9 @@ export function ProjectMedia({ coverImage, demoVideo, title }: ProjectMediaProps
           priority
         />
       ) : (
-        <div className={`absolute inset-0 flex items-center justify-center bg-muted/30 ${playing ? "opacity-0" : "opacity-100"} transition-opacity`}>
+        <div
+          className={`absolute inset-0 flex items-center justify-center bg-muted/30 ${playing ? "opacity-0" : "opacity-100"} transition-opacity`}
+        >
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/40">
             Preview unavailable
           </span>
