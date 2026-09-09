@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { Github, Linkedin, Twitter, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import { siteConfig } from "@/data/siteConfig";
+
 const NAV_LINKS = [
   { href: "/#projects", label: "Projects" },
   { href: "/about", label: "About" },
@@ -12,13 +14,13 @@ const NAV_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { href: "http://github.com/JasmondWorks", icon: Github, label: "GitHub" },
+  { href: siteConfig.links.github, icon: Github, label: "GitHub" },
   {
-    href: "https://www.linkedin.com/in/obafemi-olorede",
+    href: siteConfig.links.linkedin,
     icon: Linkedin,
     label: "LinkedIn",
   },
-  // { href: "https://twitter.com", icon: Twitter, label: "Twitter" },
+  { href: siteConfig.links.twitter, icon: Twitter, label: "X" },
 ];
 
 export function Navbar() {

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
+import { siteConfig } from "@/data/siteConfig";
 
 const FOOTER_NAV = [
   { href: "/", label: "Home" },
@@ -9,9 +10,10 @@ const FOOTER_NAV = [
 ];
 
 const SOCIAL_LINKS = [
-  { href: "https://github.com", icon: Github, label: "GitHub" },
-  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://twitter.com", icon: Twitter, label: "Twitter" },
+  { href: siteConfig.links.github, icon: Github, label: "GitHub" },
+  { href: siteConfig.links.linkedin, icon: Linkedin, label: "LinkedIn" },
+  { href: siteConfig.links.twitter, icon: Twitter, label: "X" },
+  { href: siteConfig.links.email, icon: Mail, label: "Email" },
 ];
 
 export function Footer() {
@@ -23,12 +25,15 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4 lg:grid-cols-5">
           {/* Brand */}
           <div className="space-y-6 md:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-2 group">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <span className="text-xs font-bold text-white">P</span>
+            <Link href="/" className="inline-flex items-center gap-2.5 group">
+              <span className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-indigo-500 to-violet-600 transition-transform duration-200 group-hover:scale-105 overflow-hidden">
+                <span className="absolute inset-0 bg-linear-to-b from-white/20 to-transparent" />
+                <span className="relative text-[11px] font-black tracking-tighter text-white leading-none">
+                  {siteConfig.initials}
+                </span>
               </span>
-              <span className="font-bold text-base tracking-tight text-foreground-heading">
-                Portfolio<span className="text-primary">.</span>
+              <span className="font-bold text-sm tracking-tight text-foreground-heading">
+                {siteConfig.shortName}<span className="text-primary font-black">.</span>
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
@@ -75,8 +80,8 @@ export function Footer() {
                 <Link
                   key={href}
                   href={href}
-                  target="_blank"
-                  rel="noreferrer"
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
                   aria-label={label}
                   className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground hover:text-primary hover:border-primary/20 hover:bg-primary/5 transition-all duration-200"
                 >
@@ -92,7 +97,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row font-medium">
-          <p>© {year} Portfolio. Built by Jasmond.</p>
+          <p>© {year} {siteConfig.name}. Built by Jasmond.</p>
           <p className="flex items-center gap-1.5">
             Crafted with{" "}
             <Heart className="h-3.5 w-3.5 text-red-500 fill-red-500" /> using{" "}

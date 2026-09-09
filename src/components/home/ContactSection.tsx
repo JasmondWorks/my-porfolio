@@ -4,33 +4,35 @@ import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, Twitter, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { siteConfig } from "@/data/siteConfig";
+
 const LINKS = [
   {
-    href: "mailto:hello@yourportfolio.dev",
+    href: siteConfig.links.email,
     icon: Mail,
     label: "Email",
-    value: "hello@yourportfolio.dev",
+    value: siteConfig.email,
     external: false,
   },
   {
-    href: "https://github.com",
+    href: siteConfig.links.github,
     icon: Github,
     label: "GitHub",
-    value: "github.com/you",
+    value: "github.com/jasmondWorks",
     external: true,
   },
   {
-    href: "https://linkedin.com",
+    href: siteConfig.links.linkedin,
     icon: Linkedin,
     label: "LinkedIn",
-    value: "linkedin.com/in/you",
+    value: "linkedin.com/in/obafemi-olorede",
     external: true,
   },
   {
-    href: "https://twitter.com",
+    href: siteConfig.links.twitter,
     icon: Twitter,
-    label: "Twitter",
-    value: "@yourhandle",
+    label: "X (Twitter)",
+    value: siteConfig.handle,
     external: true,
   },
 ];
@@ -64,7 +66,7 @@ export function ContactSection() {
           </p>
 
           <Link
-            href="mailto:hello@yourportfolio.dev"
+            href={siteConfig.links.email}
             className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
           >
             Send me an email <ArrowRight className="h-4 w-4" />

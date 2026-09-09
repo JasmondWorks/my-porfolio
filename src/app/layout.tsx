@@ -17,10 +17,12 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+import { siteConfig } from "@/data/siteConfig";
+
 export const metadata: Metadata = {
   title: {
-    default: "Portfolio | Full-Stack Engineer",
-    template: "%s | Portfolio",
+    default: `${siteConfig.name} | ${siteConfig.role}`,
+    template: `%s | ${siteConfig.name}`,
   },
   description:
     "Full-Stack Engineer specialising in scalable systems, real-time architectures, and intuitive interfaces.",
@@ -30,23 +32,25 @@ export const metadata: Metadata = {
     "Next.js",
     "Node.js",
     "TypeScript",
+    siteConfig.name,
     "Portfolio",
   ],
-  authors: [{ name: "Portfolio" }],
-  creator: "Portfolio",
+  authors: [{ name: siteConfig.name, url: siteConfig.links.github }],
+  creator: siteConfig.name,
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Portfolio | Full-Stack Engineer",
+    title: `${siteConfig.name} | ${siteConfig.role}`,
     description:
       "Full-Stack Engineer building scalable systems and beautiful interfaces.",
-    siteName: "Portfolio",
+    siteName: siteConfig.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio | Full-Stack Engineer",
+    title: `${siteConfig.name} | ${siteConfig.role}`,
     description:
       "Full-Stack Engineer building scalable systems and beautiful interfaces.",
+    creator: siteConfig.handle,
   },
   robots: { index: true, follow: true },
 };

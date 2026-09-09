@@ -9,10 +9,13 @@ import {
   Download,
   Github,
   Linkedin,
+  Twitter,
+  Mail,
 } from "lucide-react";
+import { siteConfig } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
-  title: "About | Portfolio",
+  title: "About | Obafemi Olorede",
   description:
     "Learn more about my background, skills, and engineering philosophy.",
 };
@@ -138,18 +141,28 @@ export default function AboutPage() {
             </div>
             <div className="flex gap-2">
               {[
-                { href: "https://github.com", icon: Github, label: "GitHub" },
+                { href: siteConfig.links.github, icon: Github, label: "GitHub" },
                 {
-                  href: "https://linkedin.com",
+                  href: siteConfig.links.linkedin,
                   icon: Linkedin,
                   label: "LinkedIn",
                 },
+                {
+                  href: siteConfig.links.twitter,
+                  icon: Twitter,
+                  label: "X",
+                },
+                {
+                  href: siteConfig.links.email,
+                  icon: Mail,
+                  label: "Email",
+                },
               ].map(({ href, icon: Icon, label }) => (
                 <a
-                  key={href}
+                  key={label}
                   href={href}
-                  target="_blank"
-                  rel="noreferrer"
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
                   aria-label={label}
                   className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-primary/20 hover:bg-primary/5 transition-all"
                 >
