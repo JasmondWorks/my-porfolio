@@ -107,7 +107,7 @@ export function AboutSection() {
               <span className="gradient-text">problem solver.</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed text-lg">
-              I&apos;m a Full-Stack Engineer with over 3 years of experience
+              I&apos;m a Full-Stack Engineer with over 5 years of experience
               building production-grade applications. My sweet spot is the
               intersection of elegant design and robust engineering.
             </p>

@@ -11,6 +11,7 @@ import {
   Linkedin,
   Twitter,
   Mail,
+  FileText,
 } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 
@@ -22,32 +23,43 @@ export const metadata: Metadata = {
 
 const EXPERIENCE = [
   {
-    role: "Senior Full-Stack Engineer",
-    company: "Tech Startup",
-    period: "2023 – Present",
+    role: "Fullstack Engineer",
+    company: "Prime Church",
+    period: "March 2026 – Present",
     points: [
-      "Built and shipped a logistics & payments platform serving thousands of merchants.",
-      "Designed event-driven architecture using Kafka and Redis for real-time processing.",
-      "Led a team of 4 engineers across frontend and backend squads.",
+      "Designed and architected a multi-tenant, multi-organisation NestJS backend supporting users across multiple organisations simultaneously.",
+      "Built an organisation-switching API endpoint with session-aware context propagation.",
+      "Implemented multi-role access control (RBAC) with admin-level overview and configuration surfaces.",
     ],
   },
   {
-    role: "Full-Stack Developer",
-    company: "Agency",
-    period: "2022 – 2023",
+    role: "Frontend Engineer",
+    company: "Marimax Global Concepts Limited",
+    period: "Sept 2025 – June 2026",
     points: [
-      "Delivered 10+ client projects from discovery to production.",
-      "Built e-commerce dashboards with real-time analytics using Next.js and PostgreSQL.",
-      "Introduced CI/CD pipelines reducing deployment time by 60%.",
+      "Architected a multi-tenant Next.js system with sub-role switching, scoping API data dynamically per selected role context.",
+      "Built a real-time delivery dispatch system with in-app and push notifications, cutting user feedback latency significantly.",
+      "Implemented permission-based rendering patterns, eliminating raw role conditionals across the UI layer.",
     ],
   },
   {
-    role: "Junior Developer",
-    company: "Freelance",
-    period: "2021 – 2022",
+    role: "Backend Engineer",
+    company: "Cavista Hackathon",
+    period: "2026 · Hackathon",
     points: [
-      "Developed React Native mobile apps for small businesses.",
-      "Built REST APIs and integrated third-party services (payment, maps, notifications).",
+      "Built the backend for DriftCare, an AI-powered health platform tracking deviation from personalized baselines.",
+      "Designed a real-time drift score engine (0–100%) adjusting dynamically as check-in responses are logged.",
+      "Surfaced defaulting habits early to help users course-correct before escalations.",
+    ],
+  },
+  {
+    role: "Fullstack Engineer",
+    company: "Roware",
+    period: "Oct 2020 – Dec 2022",
+    points: [
+      "Built production web applications and client websites (including Seplat & MFM branches) with cross-browser fidelity.",
+      "Developed dynamic server-side rendered web applications using Node.js and REST architectures.",
+      "Managed full-stack delivery from database schemas and routing to responsive user interfaces.",
     ],
   },
 ];
@@ -111,10 +123,18 @@ export default function AboutPage() {
               </Link>
               <a
                 href="/resume.pdf"
-                download
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 hover:scale-[1.02] transition-all duration-200"
+              >
+                <FileText className="h-4 w-4" /> View Resume
+              </a>
+              <a
+                href="/Obafemi_Olorede_CV_Sept.docx"
+                download="Obafemi_Olorede_CV.docx"
                 className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:border-primary/20 hover:bg-muted/50 transition-all duration-200"
               >
-                <Download className="h-4 w-4" /> Download CV
+                <Download className="h-4 w-4" /> Download DOCX
               </a>
             </div>
           </div>
@@ -156,6 +176,11 @@ export default function AboutPage() {
                   href: siteConfig.links.email,
                   icon: Mail,
                   label: "Email",
+                },
+                {
+                  href: "/resume.pdf",
+                  icon: FileText,
+                  label: "Resume",
                 },
               ].map(({ href, icon: Icon, label }) => (
                 <a

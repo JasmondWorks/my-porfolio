@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Heart, FileText } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 
 const FOOTER_NAV = [
@@ -7,6 +7,7 @@ const FOOTER_NAV = [
   { href: "/#projects", label: "Projects" },
   { href: "/about", label: "About" },
   { href: "/#contact", label: "Contact" },
+  { href: "/resume.pdf", label: "Resume" },
 ];
 
 const SOCIAL_LINKS = [
@@ -14,6 +15,7 @@ const SOCIAL_LINKS = [
   { href: siteConfig.links.linkedin, icon: Linkedin, label: "LinkedIn" },
   { href: siteConfig.links.twitter, icon: Twitter, label: "X" },
   { href: siteConfig.links.email, icon: Mail, label: "Email" },
+  { href: "/resume.pdf", icon: FileText, label: "Resume" },
 ];
 
 export function Footer() {

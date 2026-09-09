@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Github, Linkedin, Twitter, Menu, X } from "lucide-react";
+import { Github, Linkedin, Twitter, Menu, X, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 import { siteConfig } from "@/data/siteConfig";
@@ -87,7 +87,20 @@ export function Navbar() {
             ))}
 
             {/* Divider */}
-            <div className="hidden sm:block mx-2 h-4 w-px bg-border" />
+            <div className="hidden sm:block mx-1.5 h-4 w-px bg-border" />
+
+            {/* Resume */}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="View Resume"
+              title="View Resume"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-semibold text-foreground transition-all duration-200 hover:border-primary/30 hover:bg-primary/5"
+            >
+              <FileText className="h-3.5 w-3.5 text-primary" />
+              Resume
+            </a>
 
             {/* CTA */}
             <Link
@@ -127,6 +140,16 @@ export function Navbar() {
                 {label}
               </Link>
             ))}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center gap-2 px-4 py-3 text-lg font-medium text-foreground hover:text-primary rounded-lg hover:bg-muted/40 transition-colors"
+            >
+              <FileText className="h-5 w-5 text-primary" />
+              View Resume
+            </a>
             <div className="my-4 h-px bg-border" />
             <div className="flex gap-3 px-4">
               {SOCIAL_LINKS.map(({ href, icon: Icon, label }) => (

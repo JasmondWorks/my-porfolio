@@ -170,7 +170,7 @@ export const projects: Project[] = [
       "Swagger / OpenAPI",
     ],
     coverImage: "/projects/busly/cover.png",
-    githubUrl: "https://github.com/",
+    githubUrl: "https://github.com/JasmondWorks/busly-frontend",
     architecture: {
       description:
         "On startup, the backend connects to MongoDB Atlas and loads all stops (nodes), active route stop sequences (directed ROUTE edges weighted by averageTravelTimeToNext in seconds), and transfer records (bidirectional TRANSFER edges with a walking penalty plus a 120-second boarding buffer) into a Map<string, GraphNode> adjacency list held in process memory — making all A* traversals pure in-memory operations with no DB round-trips on the hot path. For a journey search, the service snaps the user's coordinates to the 3 nearest transit stops via MongoDB's $geoNear aggregation, then runs two strategies in parallel: a direct DB query for single-route trips and an in-memory A* search with a Haversine heuristic. Results are merged, deduplicated, and sorted by total duration. Each stop in the path is enriched with the nearest landmark within 300m via a $near geospatial query. On the frontend, React Query manages all server state, a Zustand store holds the active journey session, and Framer Motion handles page transitions and journey progress animation.",
@@ -477,7 +477,6 @@ export const projects: Project[] = [
       "Zod",
     ],
     coverImage: "/projects/seamless-point/cover.png",
-    demoVideo: "/projects/seamless-point/demo.mp4",
     githubUrl: "https://github.com/JasmondWorks/seamless-point2",
     liveUrl: "https://seamless-point.vercel.app",
     architecture: {
@@ -615,5 +614,87 @@ export const projects: Project[] = [
       "Introduce persistent user profiles to cache onboarding data for long-term personalised recommendations",
     ],
     dateStr: "2024-05-01",
+  },
+  {
+    id: "interlynk-hr",
+    title: "Interlynk HR",
+    slug: "interlynk-hr",
+    category: "Fullstack",
+    featured: true,
+    shortDescription:
+      "Modern talent acquisition & HR management platform unifying candidate discovery, applicant tracking, and workforce oversight.",
+    longDescription:
+      "Interlynk HR (HR Search) is an end-to-end recruitment and human resources management platform designed to streamline hiring workflows for both job seekers and hiring teams. For candidates, it provides a centralized profile with one-click multi-role applications and transparent status tracking. For employers, it delivers an integrated talent pipeline dashboard with applicant evaluation stages, employee directory oversight, and active project team assignments. Built with the Next.js App Router and designed with developer-grade aesthetics, Interlynk replaces fragmented hiring tooling with a single coherent system.",
+    techStack: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "TanStack React Query",
+      "Radix UI",
+      "Framer Motion",
+      "Lucide React",
+      "Node.js",
+      "REST API",
+      "Vercel",
+    ],
+    coverImage: "/projects/interlynk-hr/cover.png",
+    githubUrl: "https://github.com/JasmondWorks/hr-management-frontend",
+    liveUrl: "https://interlynk-hr.vercel.app/",
+    architecture: {
+      description:
+        "The application utilizes Next.js App Router with React Server Components for fast initial dashboard loads and SEO-optimized public landing pages. Client interactivity—including drag-and-drop applicant pipelines and dynamic filter facets—is powered by React 19 and TanStack Query with optimistic UI updates. Authentication routes through role-based access control (candidate vs. employer vs. admin). REST endpoints handle candidate submissions, resume metadata extraction, and real-time status notifications.",
+    },
+    engineeringDecisions: [
+      {
+        topic: "Unified Candidate-Employer Architecture",
+        decision:
+          "Single multi-role application platform instead of separate candidate portal and employer ATS",
+        reason:
+          "Consolidating candidate profiles and employer dashboards in one codebase enabled shared design tokens, unified authentication, and frictionless transitions when company users apply to external roles or collaborate internally.",
+        tradeoff:
+          "Demanded strict role-based data isolation at the API middleware layer to prevent cross-tenant access.",
+      },
+      {
+        topic: "Pipeline State Management",
+        decision:
+          "TanStack Query optimistic mutations for applicant tracking stages",
+        reason:
+          "Recruiters move candidates between stages (Applied → Screening → Interview → Offer) frequently. Optimistic UI updates ensure instantaneous drag-and-drop response without waiting for network round-trips.",
+        tradeoff:
+          "Requires rollback logic and error toast handling if a stage update fails due to server-side validation or concurrency conflicts.",
+      },
+      {
+        topic: "UI Component Architecture",
+        decision: "Radix UI headless primitives styled with Tailwind CSS",
+        reason:
+          "Ensured full keyboard accessibility (WAI-ARIA compliance) across complex modal dialogs, candidate dropdowns, and status badges while keeping the dark-mode aesthetic cohesive.",
+        tradeoff:
+          "Requires configuring bespoke component wrappers compared to an off-the-shelf pre-styled UI kit.",
+      },
+    ],
+    metrics: [
+      {
+        label: "Application Flow",
+        value: "<2 min",
+        description: "One-click application flow with reusable candidate profiles",
+      },
+      {
+        label: "Pipeline Latency",
+        value: "<100ms",
+        description: "Optimistic stage updates and cached applicant lists",
+      },
+      {
+        label: "Role Discovery",
+        value: "Real-Time",
+        description: "Instantaneous multi-facet search across organizations and roles",
+      },
+    ],
+    futureImprovements: [
+      "Implement automated AI resume-to-job description semantic matching score",
+      "Add automated interview scheduling integration with Google Calendar and Outlook",
+      "Support enterprise custom hiring workflow stages and webhook notifications for Slack/Teams",
+    ],
+    dateStr: "2024-11-15",
   },
 ];

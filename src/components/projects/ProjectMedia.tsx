@@ -42,6 +42,7 @@ export function ProjectMedia({
           src={coverImage}
           alt={title}
           fill
+          sizes="(max-width: 1024px) 100vw, 1024px"
           className={`object-contain transition-opacity duration-500 ${playing ? "opacity-0" : "opacity-100"}`}
           priority
         />

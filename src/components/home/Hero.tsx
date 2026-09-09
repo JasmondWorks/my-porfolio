@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronDown, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronDown, MessageCircle, Sparkles, FileText } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 
 const SKILLS = [
@@ -17,7 +17,7 @@ const SKILLS = [
 ];
 
 const STATS = [
-  { value: "3+", label: "Years Building" },
+  { value: "5+", label: "Years Building" },
   { value: "20+", label: "Projects Shipped" },
   { value: "10+", label: "Technologies" },
 ];
@@ -78,9 +78,10 @@ export function Hero() {
                 <div className="absolute -inset-1 rounded-full bg-linear-to-br from-indigo-500 to-violet-600 opacity-60 blur-md" />
                 <div className="relative h-28 w-28 rounded-full overflow-hidden border-2 border-background">
                   <Image
-                    src="/profile image.png"
+                    src="/profile-image.png"
                     alt="Profile photo"
                     fill
+                    sizes="112px"
                     className="object-cover object-top"
                     priority
                   />
@@ -152,6 +153,15 @@ export function Hero() {
                 <MessageCircle className="h-4 w-4" />
                 Get in Touch
               </Link>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-primary/20 bg-primary/5 px-6 py-3 text-sm font-semibold text-foreground transition-all duration-200 hover:bg-primary/10 hover:border-primary/40 hover:scale-[1.02]"
+              >
+                <FileText className="h-4 w-4 text-primary" />
+                View Resume
+              </a>
             </motion.div>
 
             {/* Stats */}
@@ -183,9 +193,10 @@ export function Hero() {
               {/* Image */}
               <div className="relative w-[260px] h-[340px] lg:w-[300px] lg:h-[390px] rounded-3xl overflow-hidden">
                 <Image
-                  src="/profile image.png"
+                  src="/profile-image.png"
                   alt="Profile photo"
                   fill
+                  sizes="(max-width: 1024px) 260px, 300px"
                   className="object-cover object-top"
                   priority
                 />
