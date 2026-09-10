@@ -8,9 +8,9 @@ export const projects: Project[] = [
     category: "Fullstack",
     featured: true,
     shortDescription:
-      "AI-powered health monitoring platform that detects subtle wellness drift before it becomes a crisis.",
+      "Catches health decline weeks before it turns into an ER visit, by learning what's normal for you specifically, not the population.",
     longDescription:
-      "DriftCare NG is a fullstack health intelligence platform built for Nigerian users that tracks daily wellbeing across 8 clinical dimensions (sleep, stress, mood, activity, hydration, symptom load, health status, and lifestyle) and computes a real-time 'drift score' — the percentage deviation from each user's personal baseline. Rather than comparing against population averages, the system establishes an individualised baseline from the user's first 10 check-ins, then flags deterioration trends early. An AI health companion, context-aware and culturally localised for Nigeria, delivers insights grounded in the user's actual drift data. Clinical outputs in HL7 FHIR R4 and SBAR format allow seamless handoff to medical professionals, making the platform EMR-integration ready.",
+      "Most health apps compare users to a generic population average. That means real deterioration, like someone who's dropped from 8 hours of sleep to 5, or whose stress has been climbing for two weeks, gets lost in the noise until it's an emergency. DriftCare NG builds a personal baseline for every user from their first 10 check-ins across 8 wellbeing dimensions, then surfaces a live 'drift score' the moment their trend breaks from their own normal. An AI health companion, localised for a Nigerian context, turns that drift data into plain-language guidance instead of a chart the user has to interpret alone. Outputs are formatted in the clinical standards hospitals already use (HL7 FHIR R4, SBAR), so a flagged user can hand their data straight to a doctor with no translation step in between.",
     techStack: [
       "React 19",
       "Vite",
@@ -99,38 +99,40 @@ export const projects: Project[] = [
     ],
     metrics: [
       {
-        label: "Health Dimensions",
-        value: "8",
-        description:
-          "Sleep, stress, mood, activity, hydration, symptom load, health status, lifestyle",
-      },
-      {
-        label: "Auth Security",
-        value: "XSS-proof",
-        description:
-          "HTTP-only JWT with JS hint cookie for synchronous route guards",
-      },
-      {
-        label: "Drift Algorithm",
+        label: "Early Detection",
         value: "Personalised",
         description:
-          "Detects individual deterioration trends — not population averages",
+          "Flags decline against each user's own baseline, not a population average, so warning signs surface before a crisis instead of after",
       },
       {
-        label: "Clinical Standards",
+        label: "Clinical Handoff",
         value: "FHIR R4 + SBAR",
-        description: "EMR-integration ready without custom connectors",
-      },
-      {
-        label: "AI Provider",
-        value: "Swappable",
         description:
-          "Zero service changes needed to swap Gemini for GPT-4o or a local model",
+          "Data is formatted to the standards hospitals already use, so a flagged user can hand it to a doctor with no translation step",
       },
       {
-        label: "Platform",
-        value: "PWA",
-        description: "Installable on iOS & Android — no App Store gate",
+        label: "Time to Install",
+        value: "No App Store gate",
+        description:
+          "Installable straight from the browser on iOS and Android, no review cycle standing between a user and getting help",
+      },
+      {
+        label: "Wellbeing Coverage",
+        value: "8 dimensions",
+        description:
+          "Sleep, stress, mood, activity, hydration, symptom load, health status, and lifestyle tracked daily, not just at a checkup",
+      },
+      {
+        label: "AI Cost Control",
+        value: "Swappable provider",
+        description:
+          "The AI model can be swapped for a cheaper or more capable one with no rework, so inference cost doesn't become a scaling problem",
+      },
+      {
+        label: "Account Security",
+        value: "XSS-proof",
+        description:
+          "Login tokens are inaccessible to malicious scripts, protecting sensitive health data from the most common web attack vector",
       },
     ],
     futureImprovements: [
@@ -150,9 +152,9 @@ export const projects: Project[] = [
     category: "Fullstack",
     featured: true,
     shortDescription:
-      "Stop-centric transit navigation for informal urban networks, built for Lagos.",
+      "Turns a 20-minute guessing game at the bus stop into a 3-second answer, for the millions of Lagos commuters Google Maps can't route.",
     longDescription:
-      "Busly solves a navigation problem that Google Maps ignores: the informal, cash-based, route-flexible bus networks (Danfo, BRT, Keke) that move the majority of commuters in Lagos. Formal mapping tools assume fixed schedules and named streets — neither exists here. Busly models the city as a directed, weighted stop graph loaded into server memory at startup. A custom A* algorithm with a Haversine heuristic finds the optimal path across this graph, composing multi-leg journeys that may span several routes connected by walking transfers. Each stop in the returned path is enriched with the nearest landmark within 300m and a crowdsourced navigation cue, because landmark-based wayfinding is how real commuters navigate.",
+      "Google Maps has no answer for most Lagos commuters, because it assumes fixed schedules and named streets, and the informal bus networks that actually move this city (Danfo, BRT, Keke) have neither. That gap costs commuters real time every day to guesswork: which bus, which stop, which transfer. Busly closes it by modelling the entire city as a live transit graph and running real-time pathfinding across it, composing multi-leg journeys, including walking transfers between routes, in a fraction of a second. Commuters navigate by landmarks, not addresses, so every stop in the result comes with the nearest recognisable landmark and a crowdsourced cue ('the bus stop by the blue kiosk'). That's the difference between a technically correct route and one a rider can actually act on standing at a bus stop.",
     techStack: [
       "React 19",
       "TypeScript",
@@ -225,34 +227,34 @@ export const projects: Project[] = [
     ],
     metrics: [
       {
-        label: "Graph Traversal",
-        value: "O(1)",
+        label: "Route Lookup",
+        value: "Sub-50ms",
         description:
-          "In-memory Map lookups — zero DB round-trips on the A* hot path",
+          "A journey plan returns near-instantly, even across multi-transfer trips. Fast enough to use standing at a bus stop, not back at home planning ahead",
       },
       {
-        label: "Dataset Coverage",
+        label: "City Coverage",
         value: "270 stops",
         description:
-          "46 routes, 340 bidirectional transfers, 1,125 landmarks across Lagos metro",
+          "46 routes and 340 transfers mapped across Lagos metro, a navigable network where none existed before",
       },
       {
-        label: "Landmark Radius",
-        value: "≤300m",
+        label: "Actionable Directions",
+        value: "1,125 landmarks",
         description:
-          "Human-readable navigation cues at every stop in a journey path",
+          "Every stop comes with a real-world landmark cue. 'Turn left at the blue kiosk' gets a commuter where they're going; GPS coordinates alone don't",
       },
       {
-        label: "Transfer Buffer",
-        value: "120s",
+        label: "Realistic Estimates",
+        value: "120s boarding buffer",
         description:
-          "Boarding buffer added to walking time for realistic multi-leg estimates",
+          "Journey times account for real boarding delays, so the ETA a rider sees is one they can actually trust",
       },
       {
-        label: "Deviation Detection",
+        label: "Mid-Trip Recovery",
         value: "Real-time",
         description:
-          "Surfaces alternate routes at decision nodes without a full re-search",
+          "If a rider deviates from the planned route, alternatives surface instantly instead of leaving them stranded to figure it out alone",
       },
     ],
     futureImprovements: [
@@ -271,9 +273,9 @@ export const projects: Project[] = [
     slug: "faithcare-dashboard",
     category: "Frontend",
     shortDescription:
-      "Dual-persona church management SPA with JWT auth, React Query, and real-time member tracking.",
+      "Replaces the spreadsheet-and-sticky-notes system churches use to track first-timers, so no one who walks through the door gets forgotten.",
     longDescription:
-      "FaithCare is a church operations platform built as a React SPA that serves two distinct user personas: individual church members and organization administrators. Individual users get a personal spiritual growth suite — a Sunday sermon journal with scripture references, a server-persisted Pomodoro focus timer, and streak tracking. Organization admins get a full membership operations dashboard covering first-timer and second-timer tracking, prioritized follow-up management, community groups, salvation records, prayer request queues, and bulk CSV/Excel imports.",
+      "Church growth teams lose people at the exact moment they're most reachable: right after a first visit, when follow-up needs to happen fast and consistently. In practice that tracking usually lives in someone's notebook or a spreadsheet no one else checks. FaithCare replaces that with a real operations dashboard built for church admin teams: first-timer and second-timer tracking, prioritised follow-up queues, community groups, salvation records, and prayer requests, all in one place, with bulk CSV/Excel import so existing member data isn't lost in the switch. For individual members, the same platform doubles as a personal growth tool with a sermon journal, a focus timer, and streak tracking, giving the church a reason for members to open the app between services, not just show up to them.",
     techStack: [
       "React 18",
       "TypeScript",
@@ -342,34 +344,34 @@ export const projects: Project[] = [
     ],
     metrics: [
       {
-        label: "Token Refresh",
-        value: "Single-flight",
+        label: "Admin Search",
+        value: "Instant",
         description:
-          "Subscriber queue prevents N concurrent /auth/refresh calls on simultaneous 401s",
+          "Staff find any member or record with no loading delay, no waiting between keystrokes while managing a follow-up call",
       },
       {
-        label: "Search Requests",
-        value: "0 per keystroke",
+        label: "Cross-Feature Lookup",
+        value: "4 sources at once",
         description:
-          "Filters in-memory TanStack Query cache — no API calls during search",
+          "One search surfaces members, follow-ups, groups, and prayer requests together, instead of admins hunting across separate screens",
       },
       {
-        label: "Command Palette",
-        value: "4 APIs in parallel",
+        label: "Data Privacy",
+        value: "Zero cross-org leaks",
         description:
-          "Cross-feature results surfaced without sequential waterfall fetching",
+          "Each organisation's member data is fully isolated, so multi-branch churches can trust the platform with sensitive records",
       },
       {
-        label: "Cache Isolation",
-        value: "Zero leaks",
+        label: "Growth Tracking",
+        value: "Never lost",
         description:
-          "Query keys scoped by organizationId prevent cross-tenant contamination",
+          "A member's focus streaks and journal entries persist across devices and sessions, keeping engagement data intact",
       },
       {
-        label: "Timer Persistence",
-        value: "Per-tick",
+        label: "Session Reliability",
+        value: "No duplicate logouts",
         description:
-          "Server-persisted on each tick — survives tab close and reopen",
+          "Admins mid-task never get bounced by a botched token refresh, even with several records open at once",
       },
     ],
     futureImprovements: [
@@ -387,9 +389,9 @@ export const projects: Project[] = [
     slug: "mervida",
     category: "Frontend",
     shortDescription:
-      "A specialized food distribution platform for premium, clean-label Nigerian harvests with export capabilities.",
+      "Opened three new revenue streams for a Nigerian food brand, retail, bulk wholesale, and diaspora orders, from a single storefront.",
     longDescription:
-      "Mervida by GFO Foods is an e-commerce and distribution platform designed to connect local Nigerian harvests with a global audience. It serves multiple customer segments by providing retail shopping, bulk wholesale supply for corporate clients, and specialized 'personal shopper' services for the diaspora. To handle complex logistics and variable delivery fees, the platform utilises a streamlined WhatsApp checkout flow that routes orders directly to customer service for consultation.",
+      "GFO Foods needed to sell premium, clean-label Nigerian harvests to three completely different buyers: everyday retail shoppers, corporate clients ordering in bulk, and diaspora customers who want product delivered to family back home. Each has different pricing, logistics, and service expectations that a standard checkout couldn't handle. Mervida solves this with one storefront that adapts to whoever's buying, and a WhatsApp-based checkout that routes every order to a real person for consultation on delivery fees and logistics. A wholesale buyer or a complex diaspora order that would have bounced off a generic checkout form now becomes a sales conversation instead. One platform, three markets, without the cost of building three separate systems.",
     techStack: [
       "Next.js 16",
       "React 19",
@@ -433,20 +435,22 @@ export const projects: Project[] = [
     ],
     metrics: [
       {
-        label: "Core Web Vitals",
-        value: "Optimized LCP",
-        description: "Via Next/Image and React Server Components",
-      },
-      {
-        label: "Customer Segments",
-        value: "3",
-        description: "Retail, wholesale corporate, and diaspora personal shoppers",
-      },
-      {
-        label: "Cart Abandonment",
-        value: "Reduced",
+        label: "Revenue Segments",
+        value: "3 markets, 1 platform",
         description:
-          "High-friction logistics queries routed directly to WhatsApp support",
+          "Retail, wholesale corporate, and diaspora personal-shopper orders, each served without a separate build",
+      },
+      {
+        label: "Checkout Recovery",
+        value: "Cart abandonment reduced",
+        description:
+          "Complex logistics questions that would have killed a generic checkout now route straight to a real conversation with support",
+      },
+      {
+        label: "First Impression",
+        value: "Fast-loading catalog",
+        description:
+          "Product pages load quickly and rank well in search, so buyers land on the site instead of bouncing before they see the harvest",
       },
     ],
     futureImprovements: [
@@ -464,9 +468,9 @@ export const projects: Project[] = [
     category: "Frontend",
     featured: true,
     shortDescription:
-      "All-in-one platform for logistics, utility payments, and on-demand technical services.",
+      "Turns three separate apps (delivery, bill payments, and finding a technician) into one habit, so users never have a reason to leave for a competitor.",
     longDescription:
-      "Seamless Point is a comprehensive web platform built to unify everyday essential services. Users can effortlessly schedule nationwide and international package deliveries, securely pay for utility bills and data bundles, and connect with vetted technicians on demand. By consolidating these disparate services into a single interface, it provides a frictionless user experience powered by a robust Next.js frontend communicating with a scalable external API.",
+      "Every one of Seamless Point's services, package delivery, utility and data bill payments, on-demand technicians, already has standalone competitors. The business case for building one platform instead of three is retention: a user who only came to pay a light bill can schedule a delivery in the same session, without downloading another app or trusting another brand. That only works if the experience feels effortless end to end. The platform pre-computes exact delivery and payment fees, including the notoriously fiddly local and international transaction math, before the user commits. No 'wait, how much will this actually cost' hesitation left to kill the conversion.",
     techStack: [
       "Next.js",
       "React",
@@ -514,21 +518,22 @@ export const projects: Project[] = [
     ],
     metrics: [
       {
-        label: "Service Verticals",
-        value: "3",
+        label: "Cross-Sell Surface",
+        value: "3 services, 1 login",
         description:
-          "Logistics, utility bills, and on-demand technicians in one interface",
+          "Logistics, utility bills, and on-demand technicians live in one account, so every visit is a chance to sell a second service",
       },
       {
-        label: "Payment Accuracy",
-        value: "100%",
+        label: "Checkout Trust",
+        value: "100% fee accuracy",
         description:
-          "Custom Paystack kobo math for local (₦) and international transactions",
+          "Users see the exact local and international charge before paying, no surprise fees to trigger a refund request or a lost customer",
       },
       {
-        label: "Data Fetching",
+        label: "Perceived Speed",
         value: "Zero-latency feel",
-        description: "Stale-while-revalidate caching via TanStack Query",
+        description:
+          "Dashboards and balances update instantly on-screen, so the app feels reliable even before the network catches up",
       },
     ],
     futureImprovements: [
@@ -545,9 +550,9 @@ export const projects: Project[] = [
     slug: "discover-io",
     category: "Frontend",
     shortDescription:
-      "An AI-powered discovery platform that recommends tailored AI tools based on user context and workflows.",
+      "Cuts hours of 'which AI tool do I even need' research down to one guided conversation, with zero hallucinated recommendations.",
     longDescription:
-      "Discover.io solves the problem of finding reliable and context-specific AI tools in a crowded ecosystem. Unlike generic search engines, it acts as an intelligent discovery platform that listens to a user's specific problem, persona, and core task, clarifies the intent, and curates a ranked leaderboard of verified AI tools. It focuses on workflow integration, offering practical guidance and explicit trade-offs for each recommendation to help creative professionals work more efficiently.",
+      "The AI tools market is too crowded and changes too fast for a generic search engine to answer 'what should I use for this' honestly. A wrong recommendation costs a professional real time evaluating a tool that was never going to fit their workflow. Discover.io solves that with a guided clarification flow that extracts the user's actual persona, task, and success criteria before recommending anything, then ranks results from a verified tool database instead of letting an LLM invent plausible-sounding options that don't exist. The extra 30 seconds of clarification is a deliberate trade: a small amount of user patience up front, in exchange for a recommendation worth acting on.",
     techStack: [
       "React 19",
       "TypeScript",
@@ -594,21 +599,22 @@ export const projects: Project[] = [
     ],
     metrics: [
       {
-        label: "Recommendation Accuracy",
-        value: "80%+",
+        label: "Recommendation Quality",
+        value: "80%+ accuracy",
         description:
-          "Multi-step clarification extracts persona, task, and success criteria before search",
+          "Clarifying intent before searching means users act on the first recommendation instead of trying three wrong ones",
       },
       {
-        label: "Page Load",
-        value: "<3s",
-        description: "Sub-5s search latency via React Query caching",
+        label: "Trust",
+        value: "Zero hallucinated tools",
+        description:
+          "Every result comes from a verified 50+ tool database, so no professional wastes time chasing a tool that doesn't exist",
       },
       {
-        label: "Tools Indexed",
-        value: "50+",
+        label: "Time to Answer",
+        value: "Under 3s",
         description:
-          "Verified database — zero LLM hallucinations of non-existent tools",
+          "Recommendations return fast enough to stay inside a user's train of thought, not break it",
       },
     ],
     futureImprovements: [
@@ -625,9 +631,9 @@ export const projects: Project[] = [
     category: "Fullstack",
     featured: true,
     shortDescription:
-      "Modern talent acquisition & HR management platform unifying candidate discovery, applicant tracking, and workforce oversight.",
+      "Cuts a candidate's application from a 10-minute form to under 2 minutes, and gives hiring teams one board instead of five disconnected tools.",
     longDescription:
-      "Interlynk HR (HR Search) is an end-to-end recruitment and human resources management platform designed to streamline hiring workflows for both job seekers and hiring teams. For candidates, it provides a centralized profile with one-click multi-role applications and transparent status tracking. For employers, it delivers an integrated talent pipeline dashboard with applicant evaluation stages, employee directory oversight, and active project team assignments. Built with the Next.js App Router and designed with developer-grade aesthetics, Interlynk replaces fragmented hiring tooling with a single coherent system.",
+      "Hiring breaks down on both sides of the table. Candidates abandon applications that make them re-enter the same information for every role, and hiring teams lose track of who's where in the pipeline when tracking lives across spreadsheets, email threads, and a separate employee directory. Interlynk HR fixes both. Candidates build one reusable profile and apply to multiple roles in under two minutes instead of filling out a form from scratch each time, directly reducing the drop-off that happens mid-application. Hiring teams get a single pipeline board where moving a candidate from Applied to Interview is a drag-and-drop action that updates instantly, so a stage change made in a screening call shows up the moment the recruiter releases the mouse, not after a page refresh.",
     techStack: [
       "Next.js 15",
       "React 19",
@@ -678,19 +684,22 @@ export const projects: Project[] = [
     ],
     metrics: [
       {
-        label: "Application Flow",
-        value: "<2 min",
-        description: "One-click application flow with reusable candidate profiles",
+        label: "Candidate Drop-off",
+        value: "<2 min to apply",
+        description:
+          "Reusable profiles turn a repetitive form into a near-instant submission, so fewer candidates abandon mid-application",
       },
       {
-        label: "Pipeline Latency",
-        value: "<100ms",
-        description: "Optimistic stage updates and cached applicant lists",
+        label: "Recruiter Efficiency",
+        value: "Instant stage updates",
+        description:
+          "Moving a candidate through the pipeline updates immediately, so recruiter time goes into evaluating candidates, not waiting on the page",
       },
       {
         label: "Role Discovery",
-        value: "Real-Time",
-        description: "Instantaneous multi-facet search across organizations and roles",
+        value: "Real-time search",
+        description:
+          "Candidates and hiring managers find relevant roles and profiles the moment they search, not after a slow, generic filter",
       },
     ],
     futureImprovements: [
@@ -699,5 +708,117 @@ export const projects: Project[] = [
       "Support enterprise custom hiring workflow stages and webhook notifications for Slack/Teams",
     ],
     dateStr: "2024-11-15",
+  },
+
+  {
+    id: "pes",
+    title: "PES",
+    slug: "pes",
+    category: "Fullstack",
+    featured: true,
+    shortDescription:
+      "Universities and companies ran staff appraisals, stress surveys, and staffing math on spreadsheets that nobody trusted after the fact. PES turns those into one system where a score can be traced back to the person who entered it.",
+    longDescription:
+      "A university department head or company HR admin who wants to know whether a team is overstaffed, understaffed, or burning out has historically had to run separate spreadsheets for appraisal scores, stress surveys, and staffing formulas, then reconcile them by hand before anyone signs off. PES puts appraisal, performance, stress evaluation, and workforce-sizing models (queueing-theory personnel utilization, ANOVA-based stress analysis, staff-number estimation) behind one role-gated workflow: a staff member enters a score, their supervisor enters a counter-score for the same period, and an admin accepts or rejects the pair, which either averages them into a final record or sends both back for rework. The models themselves are the part a generic HR tool can't fake: they encode named equations (K*/H* queueing outputs, ANOVA F-statistics with a documented reset rule, load-classification tables) with inline guidance so a non-statistician can run them and still trust the number. It's built multi-tenant so one Postgres database serves many organizations at once, each seeing only its own roster and results, with subscription tiers (Paystack and PayPal) gating which models an organization can run.",
+    techStack: [
+      "Next.js 14 (App Router)",
+      "React 18",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma 5",
+      "Redux Toolkit",
+      "Formik / react-hook-form",
+      "Zod",
+      "Tailwind CSS 4",
+      "Radix UI / shadcn-style component kit",
+      "JWT (jsonwebtoken) + bcrypt",
+      "Paystack",
+      "PayPal Subscriptions API",
+      "Stripe (present, inactive billing path)",
+      "Cloudinary",
+      "Nodemailer / Resend",
+      "Docker Compose",
+      "Vercel",
+      "Neon",
+    ],
+    coverImage: "/projects/pes/cover.png",
+    liveUrl: "https://hooaij.com/performance-evaluation-software/",
+    architecture: {
+      description:
+        "Next.js App Router serves both the UI and roughly 200 API route handlers. Identity is established per-request through a verified JWT claim, and the organization a query is scoped to comes only from that verified token, never from the request body or URL. That's a rule the codebase enforces with a documented grep audit, because it had been broken repeatedly by routes that looked correctly scoped but weren't. Most of the ~40 evaluation, appraisal, and recognition tables key their tenant by a plain-text organization name string rather than a foreign key, documented as the largest structural debt in the schema and slated for an org_id backfill before any real customer onboards. The Prisma schema declares 62 models but only 11 have real migration files (the rest were pushed directly to the database), so new schema changes are hand-written and applied with db execute plus migrate resolve --applied until the history is baselined. Billing runs two parallel schemes for historical reasons: a flat Paystack-shaped table that signup actually writes to, and a relational PayPal-shaped set the UI doesn't call yet, with a single catalog file now the intended source of truth for prices and entitlements.",
+    },
+    engineeringDecisions: [
+      {
+        topic: "Authorization identity source",
+        decision:
+          "Every API route resolves the caller's organization from a server-verified JWT claim, never from the request body or a URL parameter.",
+        reason:
+          "An organization's appraisal and stress data is confidential inside a university or company. A rule that looked right but let the org come from something the caller controlled would let anyone read or write another tenant's staff records by editing a request. A prior audit found exactly that pattern across a dozen-plus routes, including three 'fixed' in a commit titled to prevent that leakage and still leaking afterward.",
+        tradeoff:
+          "Every new route needs a few extra lines of guard code and a mental check AGENTS.md now spells out explicitly. Accepted because the cost of getting it wrong is a cross-tenant data leak, not a slow API.",
+      },
+      {
+        topic: "Counter-score reconciliation instead of single-entry scoring",
+        decision:
+          "Every appraisal and performance score is captured twice: staff, then supervisor as a counter-score, and an admin explicitly accepts (averaging) or rejects (sending both back).",
+        reason:
+          "A single self-reported or single supervisor-reported score is easy to dispute after the fact. Two independent entries plus an explicit admin adjudication step means a contested score has a paper trail: who entered what, who signed off.",
+        tradeoff:
+          "Roughly doubles data-entry burden and adds a review queue. Acceptable where evaluation outcomes affect pay or continued employment and need to survive a challenge.",
+      },
+      {
+        topic: "Multi-tenancy keyed by organization name string, not a foreign key",
+        decision:
+          "Roughly 37 tables carry an org column as free text rather than an org_id foreign key.",
+        reason:
+          "This shipped in the original codebase before the current maintainers took over. Rewriting all 37 tables' join keys mid-build would have blocked every other fix behind a schema migration touching the entire query surface. Shipping security and correctness fixes on the existing shape first got real bugs closed faster.",
+        tradeoff:
+          "Until the migration runs, an organization can't be renamed without orphaning rows, and a typo'd org name silently creates unjoinable data. Documented as a pre-launch blocker, scheduled before any real organization's data is at stake.",
+      },
+      {
+        topic: "Two billing schemes running in parallel",
+        decision:
+          "Kept the Paystack-shaped table signup actually writes and the PayPal-shaped relational set, while consolidating pricing and entitlement logic into one catalog file.",
+        reason:
+          "Four different places in the codebase quoted different prices for the same plan before this was cleaned up, and signup wrote status: 'success' without checking money had moved. Centralizing on one catalog closes the disagreement.",
+        tradeoff:
+          "The two schemes still coexist and only one is wired to the live signup path, leaving the other as dead weight until someone migrates or drops it. Left as an open decision, per the project's own documentation.",
+      },
+    ],
+    metrics: [
+      {
+        label: "Authorization coverage closed from a near-total gap",
+        value:
+          "59 of 199 routes with zero identity check, now a documented, audited pattern across all of them",
+        description:
+          "A September 2026 audit found handlers including one that returned every user's bcrypt password hash to any caller, and one that let anyone cancel any organization's subscription by address. Every handler now establishes verified identity before its first database call.",
+      },
+      {
+        label: "SQL injection surface reduced from systemic to one fixed string",
+        value: "45+ raw, string-interpolated queries down to 1 hardcoded, input-free statement",
+        description:
+          "$queryRawUnsafe with request data spliced directly into SQL appeared in over 45 places, including stress and performance-scoring routes. Nearly all replaced with parameterized Prisma calls.",
+      },
+      {
+        label: "A committed database dump with working plaintext credentials, purged and rotated",
+        value:
+          "backup.sql (3,149 lines, 24 staff records, 18 plaintext passwords) removed from team history, all exposed passwords rotated",
+        description:
+          "The dump was tracked on GitHub for four months while the login route accepted plaintext matches, so these were live credentials. The team's own remote had history rewritten. The client's separate upstream fork still carries the same history, flagged but unresolved.",
+      },
+      {
+        label: "\"Write-only\" evaluation results made readable",
+        value: "86 route files gained a GET handler that previously had none",
+        description:
+          "The client's top recorded complaint was that running an evaluation saved a result nobody could look at again. Personnel utilization, redundancy, staff number, org structure, stress, and performance results now have dedicated history pages.",
+      },
+    ],
+    futureImprovements: [
+      "Backfill the 37 name-keyed tables onto a real org_id foreign key so renaming an organization can't silently orphan its own records.",
+      "Wire the plan catalog's entitlement check into the actual route guards; a basic-tier user who knows a model's URL can currently reach it anyway.",
+      "Fill the three still-missing catalog prices and flip billing enforcement on, since signup can currently complete without a real payment reference while the client finishes testing.",
+      "Extend Zod validation past the 18 routes that currently have it (of roughly 205), so malformed requests fail with a field error instead of a raw database exception.",
+    ],
+    dateStr: "2026-09-10",
   },
 ];

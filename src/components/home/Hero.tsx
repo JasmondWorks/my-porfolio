@@ -17,9 +17,9 @@ const SKILLS = [
 ];
 
 const STATS = [
-  { value: "5+", label: "Years Building" },
-  { value: "20+", label: "Projects Shipped" },
-  { value: "10+", label: "Technologies" },
+  { value: "7+", label: "Products Launched" },
+  { value: "3", label: "Industries Served" },
+  { value: "5+", label: "Years Delivering" },
 ];
 
 const container: Variants = {
@@ -106,9 +106,9 @@ export function Hero() {
               variants={item}
               className="text-4xl font-bold tracking-tight text-foreground-heading sm:text-5xl lg:text-6xl"
             >
-              Crafting{" "}
-              <span className="gradient-text-animated">digital experiences</span>
-              <br className="hidden sm:block" /> with precision &amp; purpose.
+              I build software that{" "}
+              <span className="gradient-text-animated">moves your numbers</span>
+              <br className="hidden sm:block" /> not just your roadmap.
             </motion.h1>
 
             {/* Subheadline */}
@@ -116,8 +116,9 @@ export function Hero() {
               variants={item}
               className="max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
-              Full-Stack Engineer specialising in scalable systems and intuitive
-              interfaces. I build things people love to use.
+              Full-Stack Engineer who turns technical decisions into business
+              outcomes. Faster checkouts, fewer drop-offs, tools your team
+              actually uses.
             </motion.p>
 
             {/* Skill pills — hidden on mobile to keep layout compact */}

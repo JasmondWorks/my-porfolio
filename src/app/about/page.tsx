@@ -27,9 +27,9 @@ const EXPERIENCE = [
     company: "Prime Church",
     period: "March 2026 – Present",
     points: [
-      "Designed and architected a multi-tenant, multi-organisation NestJS backend supporting users across multiple organisations simultaneously.",
-      "Built an organisation-switching API endpoint with session-aware context propagation.",
-      "Implemented multi-role access control (RBAC) with admin-level overview and configuration surfaces.",
+      "Let one platform serve every affiliated organisation instead of standing up separate systems for each, cutting the cost of onboarding a new branch to near-zero.",
+      "Made switching between organisations a one-click action for admins managing multiple branches, instead of separate logins per org.",
+      "Gave leadership a single admin view across every organisation's access and permissions, replacing manual, branch-by-branch oversight.",
     ],
   },
   {
@@ -37,9 +37,9 @@ const EXPERIENCE = [
     company: "Marimax Global Concepts Limited",
     period: "Sept 2025 – June 2026",
     points: [
-      "Architected a multi-tenant Next.js system with sub-role switching, scoping API data dynamically per selected role context.",
-      "Built a real-time delivery dispatch system with in-app and push notifications, cutting user feedback latency significantly.",
-      "Implemented permission-based rendering patterns, eliminating raw role conditionals across the UI layer.",
+      "Let staff switch between roles and departments without separate logins, scoping their data automatically per context.",
+      "Cut the delay between a delivery event happening and a team member knowing about it, via a real-time dispatch and notification system.",
+      "Removed a recurring class of access bugs by replacing scattered permission checks with a single, consistent rendering pattern.",
     ],
   },
   {
@@ -47,9 +47,9 @@ const EXPERIENCE = [
     company: "Cavista Hackathon",
     period: "2026 · Hackathon",
     points: [
-      "Built the backend for DriftCare, an AI-powered health platform tracking deviation from personalized baselines.",
-      "Designed a real-time drift score engine (0–100%) adjusting dynamically as check-in responses are logged.",
-      "Surfaced defaulting habits early to help users course-correct before escalations.",
+      "Built the backend for DriftCare, an AI health platform that flags wellness decline before it becomes a crisis, instead of after.",
+      "Designed a personalised drift-score engine that updates in real time as users check in, so deterioration is caught early rather than at the next appointment.",
+      "Helped users catch and course-correct unhealthy habits before they escalated into a medical issue.",
     ],
   },
   {
@@ -57,9 +57,9 @@ const EXPERIENCE = [
     company: "Roware",
     period: "Oct 2020 – Dec 2022",
     points: [
-      "Built production web applications and client websites (including Seplat & MFM branches) with cross-browser fidelity.",
-      "Developed dynamic server-side rendered web applications using Node.js and REST architectures.",
-      "Managed full-stack delivery from database schemas and routing to responsive user interfaces.",
+      "Shipped production websites for enterprise clients, including Seplat and MFM branches, that held up across every browser their users showed up in.",
+      "Built server-rendered web applications for clients who needed pages indexed and fast on first load, not just functional.",
+      "Owned delivery end-to-end, from database design to the interface, so clients had one point of accountability instead of coordinating multiple vendors.",
     ],
   },
 ];
@@ -98,21 +98,22 @@ export default function AboutPage() {
               About Me
             </div>
             <h1 className="text-4xl font-bold tracking-tight text-foreground-heading sm:text-5xl">
-              Passionate engineer,{" "}
-              <span className="gradient-text">problem solver.</span>
+              I build the product,{" "}
+              <span className="gradient-text">you get the results.</span>
             </h1>
             <p className="text-muted-foreground leading-relaxed">
-              I&apos;m a Full-Stack Engineer with 3+ years building
-              production-grade applications. My sweet spot is where elegant
-              design meets robust engineering — I care about the craft as much
-              as the outcome.
+              I&apos;m a Full-Stack Engineer with 3+ years turning business
+              problems into shipped products: faster checkouts, workflows
+              that used to take a spreadsheet and now take a click,
+              dashboards that let a team see what&apos;s happening instead of
+              guessing.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              From real-time logistics platforms to mobile apps, I&apos;ve
-              shipped products that real people use and love. I thrive in
-              fast-paced environments and believe that great software is built
-              through iteration, collaboration, and a relentless focus on the
-              user.
+              From logistics platforms handling real transactions to internal
+              tools teams use every day, I&apos;ve shipped products that real
+              businesses depend on. I thrive in fast-paced environments and
+              believe great software earns its keep by making someone&apos;s
+              job easier or a customer&apos;s decision faster.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <Link

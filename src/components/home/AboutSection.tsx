@@ -59,21 +59,21 @@ const SKILL_CATEGORIES = [
 const PILLARS = [
   {
     icon: Zap,
-    title: "Performance First",
+    title: "Speed That Converts",
     description:
-      "Every decision is made with speed and efficiency in mind — from database queries to bundle size.",
+      "Faster load times and fewer clicks aren't a technical nicety. They're the difference between a sale and an abandoned cart.",
   },
   {
     icon: Globe,
-    title: "Scalability by Design",
+    title: "Built to Outgrow Itself",
     description:
-      "Systems built to grow. I architect for tomorrow without over-engineering for today.",
+      "Your product today isn't your product at 10x the users. I build so growth doesn't force a rebuild.",
   },
   {
     icon: Shield,
-    title: "Quality Code",
+    title: "Fewer Fires to Fight",
     description:
-      "Clean, typed, tested. Code that your future self — and your team — will actually enjoy working with.",
+      "Clean, tested code means less time firefighting bugs, more time shipping the features that move your business forward.",
   },
 ];
 
@@ -103,17 +103,21 @@ export function AboutSection() {
               About Me
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-foreground-heading sm:text-4xl">
-              Passionate engineer,{" "}
-              <span className="gradient-text">problem solver.</span>
+              I build the product,{" "}
+              <span className="gradient-text">you get the results.</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed text-lg">
-              I&apos;m a Full-Stack Engineer with over 5 years of experience
-              building production-grade applications. My sweet spot is the
-              intersection of elegant design and robust engineering.
+              I&apos;m a Full-Stack Engineer with over 5 years turning business
+              problems (slow checkouts, manual workflows, clunky onboarding)
+              into software that fixes them. My job isn&apos;t just writing
+              code, it&apos;s translating what your business needs into a
+              working product.
             </p>
             <p className="text-muted-foreground leading-relaxed text-lg">
-              I care deeply about the craft — writing code that&apos;s not just
-              functional, but maintainable, performant, and a joy to work with.
+              Every technical decision I make, from how data is stored to how
+              a screen loads, is made in service of an outcome: faster
+              adoption, lower churn, fewer support tickets, a team that
+              trusts the tools they&apos;re using.
             </p>
           </div>
 
