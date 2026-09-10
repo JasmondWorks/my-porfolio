@@ -32,8 +32,9 @@ export const projects: Project[] = [
       "Swagger / OpenAPI",
       "Vercel",
     ],
-    coverImage: "/projects/driftcare/cover.png",
+    coverImage: "/projects/driftcare/landing-cover.png",
     githubUrl: "https://github.com/Donvictory/AI-HEALTHCARE-NEW",
+    liveUrl: "https://ai-healthcare-new.vercel.app/",
     architecture: {
       description:
         "The frontend is a React 19 SPA served from Vercel's CDN. TanStack React Query owns all server state with stale-while-revalidate semantics. Auth is handled via JWT stored exclusively in HTTP-only cookies (access token: 1h, refresh token: 7d), with a non-httpOnly hint cookie letting React Router guards make synchronous auth decisions without exposing the real token to JavaScript. On 401, an Axios interceptor silently hits the refresh endpoint and retries the original request. API traffic routes to an Express backend deployed as Vercel Functions under /api/v1/. Each feature domain (user, check-in, dashboard, chat, doctor, media, task) is fully modular: its own controller, service, route, Mongoose model, DTO, validator, and entity. The AI chat endpoint builds a context window from the user's recent and baseline check-in cohorts, injects the computed drift percentage into the system prompt, and forwards the conversation to OpenRouter (Gemini 2.5 Flash) via a pluggable IAIProvider abstraction.",
@@ -171,6 +172,7 @@ export const projects: Project[] = [
     ],
     coverImage: "/projects/busly/cover.png",
     githubUrl: "https://github.com/JasmondWorks/busly-frontend",
+    liveUrl: "https://busly-ng.vercel.app/",
     architecture: {
       description:
         "On startup, the backend connects to MongoDB Atlas and loads all stops (nodes), active route stop sequences (directed ROUTE edges weighted by averageTravelTimeToNext in seconds), and transfer records (bidirectional TRANSFER edges with a walking penalty plus a 120-second boarding buffer) into a Map<string, GraphNode> adjacency list held in process memory — making all A* traversals pure in-memory operations with no DB round-trips on the hot path. For a journey search, the service snaps the user's coordinates to the 3 nearest transit stops via MongoDB's $geoNear aggregation, then runs two strategies in parallel: a direct DB query for single-route trips and an in-memory A* search with a Haversine heuristic. Results are merged, deduplicated, and sorted by total duration. Each stop in the path is enriched with the nearest landmark within 300m via a $near geospatial query. On the frontend, React Query manages all server state, a Zustand store holds the active journey session, and Framer Motion handles page transitions and journey progress animation.",
@@ -289,6 +291,7 @@ export const projects: Project[] = [
     ],
     coverImage: "/projects/faithcare/cover.png",
     githubUrl: "https://github.com/Donvictory/Faithcare",
+    liveUrl: "https://faithcare-home.vercel.app/",
     architecture: {
       description:
         "The app is a Vite-bundled React SPA deployed to Vercel with a catch-all rewrite routing all paths to index.html. The short-lived JWT access token lives exclusively in a JavaScript module-scoped variable (never localStorage), providing XSS resistance. The long-lived refresh token is stored in an HTTP-only cookie. On any 401, a single-flight refresh mechanism blocks concurrent calls while queued requests are held in a subscriber array, then replayed with the new token once resolved. Data fetching uses TanStack Query v5 with query keys namespaced by organizationId and userId to prevent cross-tenant cache hits. The global cmdk command palette queries four API endpoints in parallel on open, and a SearchContext filters already-cached data client-side with zero per-keystroke API calls.",
