@@ -102,7 +102,7 @@ export default function AboutPage() {
               <span className="gradient-text">you get the results.</span>
             </h1>
             <p className="text-muted-foreground leading-relaxed">
-              I&apos;m a Full-Stack Engineer with 3+ years turning business
+              I&apos;m a Full-Stack Engineer with over 5 years turning business
               problems into shipped products: faster checkouts, workflows
               that used to take a spreadsheet and now take a click,
               dashboards that let a team see what&apos;s happening instead of
