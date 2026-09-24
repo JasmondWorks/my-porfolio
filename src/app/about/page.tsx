@@ -19,6 +19,27 @@ export const metadata: Metadata = {
   title: "About | Obafemi Olorede",
   description:
     "Learn more about my background, skills, and engineering philosophy.",
+  openGraph: {
+    title: "About Obafemi Olorede | Full-Stack Engineer",
+    description:
+      "Learn more about my background, skills, and engineering philosophy.",
+    url: "/about",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "About Obafemi Olorede",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Obafemi Olorede | Full-Stack Engineer",
+    description:
+      "Learn more about my background, skills, and engineering philosophy.",
+    images: ["/og-image.png"],
+  },
 };
 
 const EXPERIENCE = [

@@ -59,9 +59,42 @@ For this project, determine or ask:
 
 ---
 
+## Demo Video Recording (Playwright)
+
+Once the project profile and gap report are drafted, record a real demo video of the live (or local) platform using Playwright, driven by the golden path implied by `shortDescription`. Don't describe what a demo would show; actually script and run one.
+
+1. **Confirm the target before recording.** Use `liveUrl` if the deployed app is reachable and safe to record against (no real client data, or a dedicated demo/seed account). Otherwise ask me for a demo login, a seeded test account, or whether to spin up the app locally (`npm run dev` / `docker compose up`) instead. Never record a walkthrough against real client or user data.
+2. **Script the golden path, not a feature tour.** The recording should dramatize the exact before/after claim in `shortDescription` and `longDescription`, not click through every menu. Concretely: identify the 3-6 step flow that proves the core outcome (e.g., for PES: log in as staff, submit a score, log in as supervisor, submit the counter-score, log in as admin, accept and reveal the reconciled result). Write this as an explicit step list before writing the Playwright script, and share it with me for a sanity check if the login flow requires credentials I haven't given you.
+3. **Write the Playwright script to record video, not just run a test.** Use a browser context with video recording enabled, sized for portfolio display (1280x720 or 1920x1080), for example:
+   ```typescript
+   import { chromium } from "playwright";
+
+   const browser = await chromium.launch();
+   const context = await browser.newContext({
+     recordVideo: { dir: "recordings/<slug>/", size: { width: 1280, height: 720 } },
+     viewport: { width: 1280, height: 720 },
+   });
+   const page = await context.newPage();
+
+   // Golden path steps, with a short pause (500-1000ms) after each
+   // meaningful action so the recording reads as deliberate, not frantic.
+   await page.goto("<liveUrl or local URL>");
+   // ...scripted steps for the golden path...
+
+   await context.close(); // finalizes the video file
+   await browser.close();
+   ```
+   Add a deliberate pause after each meaningful action (`page.waitForTimeout(500-1000)` or better, wait on the actual UI change) so the pacing looks intentional on playback, not like an automated script running at full speed.
+4. **Keep it short.** Target 20-45 seconds of actual runtime. Trim dead time (page loads, redundant navigation) rather than scripting around it; cut it in post if Playwright's raw capture runs long.
+5. **Convert and place the output correctly.** Playwright records `.webm`. Convert it to `.mp4` (e.g. `ffmpeg -i input.webm -c:v libx264 -crf 23 output.mp4`) and save it to `public/projects/<slug>/demo.mp4`, matching the `demoVideo` field path in the schema below. Confirm the file exists and plays before setting `demoVideo` in the output.
+6. **If the golden path requires something you don't have** (test credentials, a seeded database, a payment sandbox, an org that doesn't exist yet), stop and ask me directly rather than skipping the recording or faking a shorter, unrepresentative flow.
+7. **Report what you actually did.** In the final output, state which flow you recorded, how long it runs, where the file was saved, and flag anything the recording couldn't show (e.g., a multi-day approval flow that had to be compressed or narrated instead of shown live).
+
+---
+
 ## Required Output
 
-Produce three things:
+Produce four things:
 
 ### 1. Project Profile (TypeScript object matching the schema below)
 
@@ -121,6 +154,10 @@ A short list of what screenshots or recordings would best support this project's
 ### 3. Marketing & Social Proof Gap Report
 
 A direct, itemized list of everything from the "Marketing & Social Proof Extraction" section above that could not be filled in from the repository. For each gap, state exactly what's missing and exactly what you need from me to fill it (a name, a permission confirmation, a specific number, a quote request I should send). This section should never come back empty just because the code has nothing to say about it, silence here means the check wasn't actually run.
+
+### 4. Demo Video Report
+
+Confirmation of what was recorded per the "Demo Video Recording" section: the golden path steps captured, the final file path (`public/projects/<slug>/demo.mp4`), runtime length, and any part of the flow that couldn't be shown live and had to be flagged instead. If recording wasn't possible (no credentials, no safe environment to record against), say so explicitly here and state exactly what's needed from me to unblock it, don't silently omit `demoVideo` from the profile without explanation.
 
 ---
 

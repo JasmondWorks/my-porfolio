@@ -20,18 +20,21 @@ const geistMono = Geist_Mono({
 import { siteConfig } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: `${siteConfig.name} | ${siteConfig.role}`,
     template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "Full-Stack Engineer specialising in scalable systems, real-time architectures, and intuitive interfaces.",
+  description: siteConfig.description,
   keywords: [
-    "Full-Stack",
+    "Full-Stack Engineer",
+    "Software Engineer",
     "React",
     "Next.js",
     "Node.js",
     "TypeScript",
+    "PostgreSQL",
+    "System Architecture",
     siteConfig.name,
     "Portfolio",
   ],
@@ -40,17 +43,34 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
+    url: siteConfig.url,
     title: `${siteConfig.name} | ${siteConfig.role}`,
-    description:
-      "Full-Stack Engineer building scalable systems and beautiful interfaces.",
+    description: siteConfig.description,
     siteName: siteConfig.name,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — ${siteConfig.role}`,
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} | ${siteConfig.role}`,
-    description:
-      "Full-Stack Engineer building scalable systems and beautiful interfaces.",
+    description: siteConfig.description,
     creator: siteConfig.handle,
+    site: siteConfig.handle,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — ${siteConfig.role}`,
+      },
+    ],
   },
   robots: { index: true, follow: true },
 };

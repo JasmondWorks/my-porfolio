@@ -19,6 +19,9 @@ import { ProjectCategory } from "@/types/project";
 import { cn } from "@/lib/utils";
 import { ProjectMedia } from "@/components/projects/ProjectMedia";
 
+import type { Metadata } from "next";
+import { siteConfig } from "@/data/siteConfig";
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -26,6 +29,46 @@ interface Props {
 export async function generateStaticParams() {
   const projects = await getProjects();
   return projects.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  const title = `${project.title} — Case Study | ${siteConfig.name}`;
+  const description = project.shortDescription;
+  const ogImage = project.coverImage || "/og-image.png";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `/projects/${project.slug}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
+  };
 }
 
 const CATEGORY_STYLES: Record<
